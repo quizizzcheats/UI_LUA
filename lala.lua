@@ -2821,27 +2821,25 @@ Library.Notification = function()
 	local Frame = Instance.new("Frame")
 	local UIListLayout = Instance.new("UIListLayout")
 
-	Notification.Name = "Notification"
+	Notification.Name = game:GetService('HttpService'):GenerateGUID(false)
 	Notification.Parent = CoreGui
 	Notification.ResetOnSpawn = false
 	Notification.ZIndexBehavior = Enum.ZIndexBehavior.Global
-	Notification.Name = game:GetService('HttpService'):GenerateGUID(false)
 	Notification.IgnoreGuiInset = true
 
+
 	Frame.Parent = Notification
-	Frame.AnchorPoint = Vector2.new(0.5, 0.5)
-	Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Frame.BackgroundTransparency = 1.000
-	Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Frame.AnchorPoint = Vector2.new(1, 0) -- จุดอ้างอิงเป็นมุมขวาบน
+	Frame.Position = UDim2.new(1, -20, 0, 20) -- ห่างจากขอบจอขวา 20px, บน 20px
+	Frame.Size = UDim2.new(0, 300, 1, -40) -- ความกว้าง 300px
+	Frame.BackgroundTransparency = 1
 	Frame.BorderSizePixel = 0
-	Frame.Position = UDim2.new(0.151568726, 0, 0.5, 0)
-	Frame.Size = UDim2.new(0.400000006, 0, 0.400000006, 0)
-	Frame.SizeConstraint = Enum.SizeConstraint.RelativeYY
 
 	UIListLayout.Parent = Frame
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
-	UIListLayout.Padding = UDim.new(0,2);
+	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Top -- ✅ ให้แสดงเรียงจากบนลงล่าง
+	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
+	UIListLayout.Padding = UDim.new(0, 6)
 
 	return {
 		new = function(ctfx)
